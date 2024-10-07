@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bannière Animation</title>
+    <style>
+        @keyframes nuclearExplosion {
+            0% {
+                opacity: 0;
+                transform: scale(0.1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+                background-color: red;
+                filter: brightness(2);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(5);
+                background-color: black;
+                filter: brightness(0);
+            }
+        }
+        .nuclear-banner {
+            animation: nuclearExplosion 2s ease-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+
+    <script>
+        // Fonction pour afficher le message
+        function showNuclearBanner(viewerName, message) {
+            var bannerHtml = '<div class="nuclear-banner">' +
+                             '<strong>💥 Message de ' + viewerName + ':</strong> ' + message +
+                             '</div>';
+            document.getElementById("overlay").innerHTML = bannerHtml;
+
+            // Après 5 secondes, retirer la bannière
+            setTimeout(function() {
+                document.getElementById("overlay").innerHTML = ''; // Effacer la bannière
+            }, 5000);
+        }
+
+        // Exécute la bannière avec des exemples
+        // Tu peux remplacer ces valeurs par des données en temps réel venant d'un bot ou d'une intégration
+        showNuclearBanner("Utilisateur", "Ceci est un message d'exemple !");
+    </script>
+</body>
+</html>
